@@ -2,7 +2,7 @@ console.log("Before");
 getUser(1, function(user){
     console.log('User', user);
     //Get the repository
-    getRepository(user,function(repo){
+    getRepository(user.gitHubUsername,function(repo){
         console.log('Repo', repo);
     });
 });
