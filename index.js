@@ -6,24 +6,33 @@ getUser(  1, function(user){
         });
     });
 });
+
+  
 console.log("After");
 
-function getUser(id, callback){
-    setTimeout(() => {
-        console.log("Featching a user from Database..");
-        callback( {id: id, gitHubUsername: "kishna2020"});
-    },2000);
-}
+function getUser(id){
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            console.log("Featching a user from Database..");
+            resolve( {id: id, gitHubUsername: "kishna2020"});
+        }, 2000);
+    });
+};
 
-function getRepository(user, callback){
-    setTimeout(() => {
-        console.log("Featching data from repository...");
-        callback(['rep1','rep2','rep3']);
-    }, 2000);
+function getRepository(user){
+    return new Promise((resolve, reject) =>{
+        setTimeout(() => {
+            console.log("Featching data from repository...");
+            resolve(['rep1','rep2','rep3']);
+        }, 2000);
+    });
+    
 }
-function getCommits(repo, callback) {
-    setTimeout(() => {
-        console.log("caalling github api");
-        callback(['commit']);
-    },2000);
-}
+function getCommits(repo) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            console.log("caalling github api");
+            resolve(['commit']);
+        },2000);
+    });
+} 
