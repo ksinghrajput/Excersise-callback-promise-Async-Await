@@ -6,12 +6,28 @@ console.log("Before");
 //         });
 //     });
 // });
-getUser(1)
-    .then( user => getRepository(user.gitHubUsername))
-    .then( repos => getCommits(repos[0]))
-    .then(commits => console.log('commits',commits))
-    .catch(err => console.log('Error', err.message));
 
+//used in promises
+// getUser(1)
+//     .then( user => getRepository(user.gitHubUsername))
+//     .then( repos => getCommits(repos[0]))
+//     .then(commits => console.log('commits',commits))
+//     .catch(err => console.log('Error', err.message));
+
+//async Await
+    async function displayCommit(){
+        try {
+            const user = await getUser(1);
+             const repos = await getRepository(user.gitHubUsername);
+             const commits = await getCommits(repos[0]);
+                console.log('Commit :->', commits);        
+        } catch (e) {
+                 console.log(e.message);
+                  }
+    }
+
+    displayCommit();
+    
   
 console.log("After");
 
