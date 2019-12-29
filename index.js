@@ -1,11 +1,16 @@
 console.log("Before");
-getUser(  1, function(user){
-    getRepository(user.gitHubUsername,function(repos){
-            getCommits(repos[0], (commits) => {
-            console.log(commits);
-        });
-    });
-});
+// getUser(  1, function(user){
+//     getRepository(user.gitHubUsername,function(repos){
+//             getCommits(repos[0], (commits) => {
+//             console.log(commits);
+//         });
+//     });
+// });
+getUser(1)
+    .then( user => getRepository(user.gitHubUsername))
+    .then( repos => getCommits(repos[0]))
+    .then(commits => console.log('commits',commits))
+    .catch(err => console.log('Error', err.message));
 
   
 console.log("After");
